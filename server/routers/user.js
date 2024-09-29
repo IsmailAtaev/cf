@@ -6,7 +6,7 @@ const UserController = require('../controllers/user')
 // const authMiddleware = require('../middleware/authMiddleware')
 // const registration = require('../middleware/registration')
 // const registrationIMG = require('../middleware/registrationIMG')
-// const loginMiddleware = require('../middleware/loginMiddleware')
+const loginMiddleware = require('../middleware/loginMiddleware')
 // const updataUser = require('../middleware/updataUser')
 // const path = require('path');
 
@@ -37,7 +37,7 @@ const UserController = require('../controllers/user')
 // const uploadUpdata = multer({ storage: storageUpdata })
 
 router.get("/users", UserController.getUsers)
-// router.post("/login", loginMiddleware, UserController.login)
+router.post("/login", loginMiddleware, UserController.login)
 router.post('/registration', UserController.registration)
 // router.post('/registration-img', upload.single("file"), registrationIMG, UserController.registrationImg)
 // router.post('/updata-img', uploadUpdata.single("file"), UserController.updateIMG)

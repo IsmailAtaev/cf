@@ -51,7 +51,7 @@ class UserController {
                 return res.status(400).json({ message: 'Is not correct password' })
             }
 
-            return res.status(200).json({ user: candidate })
+            return res.status(200).json({ data: candidate })
         } catch (e) {
             return res.status(400).json({ message: e.messages })
         }
