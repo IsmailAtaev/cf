@@ -1,6 +1,6 @@
 const PORT = 6001; // ali port
 const CLIENT_URL = "http://localhost:6000";
-const DB_NAME = "cf";
+const DB_NAME = "CF";
 const DB_USER = "postgres";
 const DB_PASSWORD = "123456789"; // server db pass alemtilsimat
 const DB_HOST = "localhost";
