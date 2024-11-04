@@ -2,12 +2,14 @@ const sequelize = require('../database')
 const { DataTypes } = require('sequelize')
 
 
-
 const Role = sequelize.define("Role", {
     id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
-    name: { type: DataTypes.STRING, unique: true, allowNull: false }
+    name: { type: DataTypes.STRING, unique: true, allowNull: false },
+    permissions: {
+        type: DataTypes.JSON, // Corrected the type declaration
+        allowNull: false, // Not null should be written as 'allowNull: false'
+    }
 })
-
 
 const User = sequelize.define('User', {
     id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
@@ -20,7 +22,6 @@ const User = sequelize.define('User', {
     phoneNumber: { type: DataTypes.STRING },
     img: { type: DataTypes.STRING },
 })
-
 
 const Category = sequelize.define("Category", {
     id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
@@ -45,6 +46,9 @@ Category.belongsTo(Category, { foreignKey: 'parentId', as: 'parentCategory' });
 
 Category.hasMany(Product, { foreignKey: 'categoryId', as: 'products' });
 Product.belongsTo(Category, { foreignKey: 'categoryId', as: 'category' });
+
+Role.hasMany(User, { foreignKey: 'roleId', as: 'roleId' })
+User.belongsTo(Role, { foreignKey: 'roleId', as: 'userRoleId' })
 
 
 module.exports = {
