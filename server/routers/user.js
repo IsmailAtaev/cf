@@ -7,6 +7,7 @@ const UserController = require('../controllers/user')
 // const registration = require('../middleware/registration')
 // const registrationIMG = require('../middleware/registrationIMG')
 const loginMiddleware = require('../middleware/loginMiddleware')
+const registration = require('../middleware/registration')
 // const updataUser = require('../middleware/updataUser')
 // const path = require('path');
 
@@ -38,7 +39,7 @@ const loginMiddleware = require('../middleware/loginMiddleware')
 
 router.get("/users", UserController.getUsers)
 router.post("/login", loginMiddleware, UserController.login)
-router.post('/registration', UserController.registration)
+router.post('/registration', registration, UserController.registration)
 // router.post('/registration-img', upload.single("file"), registrationIMG, UserController.registrationImg)
 // router.post('/updata-img', uploadUpdata.single("file"), UserController.updateIMG)
 // router.patch('/update', updataUser, UserController.updateUser)

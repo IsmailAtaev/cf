@@ -1,5 +1,5 @@
 const { SECRET_KEY_RANDOM } = require("../conf")
-const { User } = require("../model/models")
+const { User, Role } = require("../model/models")
 const bcrypt = require("bcryptjs")
 const fs = require('fs');
 const path = require('path');
@@ -10,11 +10,12 @@ class UserController {
 
     async registration(req, res) {
         try {
-            const { login, password, lastname, firstname, email, phoneNumber, role } = req.body;
+            const { login, password, lastname, firstname, email, phoneNumber, roleId } = req.body;
             const candidate = await User.findOne({ where: { login } })
             if (candidate) {
-                return res.status(400).json({ message: 'This login have' })
+                return res.status(400).json({ message: `This login have: ${login} ` })
             }
+
             const hash = await bcrypt.hash(password, 7);
             const user = await User.create({
                 login,
@@ -23,11 +24,9 @@ class UserController {
                 firstname,
                 email,
                 phoneNumber,
-                departmentId,
-                positionId,
-                role
+                roleId
             })
-
+        
             if (!user) {
                 return res.status(500).json({ message: 'Do not registration user' })
             }
