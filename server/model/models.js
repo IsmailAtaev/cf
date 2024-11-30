@@ -29,7 +29,7 @@ const Category = sequelize.define("Category", {
 const Product = sequelize.define("Product", {
     id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
     title: { type: DataTypes.STRING, allowNull: false },
-    description: { type: DataTypes.STRING, allowNull: false },
+    description: { type: DataTypes.TEXT, allowNull: false },
     price: { type: DataTypes.FLOAT },
     categoryId: { type: DataTypes.UUID, allowNull: false },
     img: { type: DataTypes.ARRAY(DataTypes.STRING) }

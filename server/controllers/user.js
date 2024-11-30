@@ -15,6 +15,7 @@ class UserController {
             if (candidate) {
                 return res.status(400).json({ message: `This login have: ${login} ` })
             }
+            
 
             const hash = await bcrypt.hash(password, 7);
             const user = await User.create({
