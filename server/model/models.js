@@ -32,8 +32,19 @@ const Product = sequelize.define("Product", {
     description: { type: DataTypes.TEXT, allowNull: false },
     price: { type: DataTypes.FLOAT },
     categoryId: { type: DataTypes.UUID, allowNull: false },
-    img: { type: DataTypes.ARRAY(DataTypes.STRING) }
+    img: { type: DataTypes.ARRAY(DataTypes.STRING) },
+    normativeDocuments: { type: DataTypes.STRING, allowNull: false },
+    structureOfCable: { type: DataTypes.STRING, allowNull: false },
+    technicalCharacteristics: { type: DataTypes.JSON, allowNull: false },
+    performanceOptions: { type: DataTypes.STRING, allowNull: false },
 });
+
+
+const TechnicalСharacteristic = sequelize.define("TechnicalСharacteristic", {
+    id: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV4, primaryKey: true },
+    title: { type: DataTypes.STRING, allowNull: false },
+    description: { type: DataTypes.TEXT, allowNull: false },
+})
 
 
 // Setting up associations
